@@ -18,7 +18,7 @@ export class App extends Component {
     }));
   };
 
-  formSubmitHandler = data => {
+  onContactAdd = data => {
     console.log(data);
   };
 
@@ -27,7 +27,7 @@ export class App extends Component {
       <>
         <div>
           <h1>Phonebook</h1>
-          <Form onSubmit={this.formSubmitHandler} />
+          <Form onSubmit={this.onContactAdd} />
         </div>
 
         <div>
