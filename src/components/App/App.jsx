@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 import Form from '../Form/Form';
 import ContactList from '../ContactList/ContactList';
 
@@ -19,7 +20,15 @@ export class App extends Component {
   };
 
   onContactAdd = data => {
-    console.log(data);
+    const newContact = {
+      id: nanoid(),
+      name: data.name,
+      number: data.number,
+    };
+
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newContact],
+    }));
   };
 
   render() {
