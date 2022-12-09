@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { FormStyle, Label, Input, Button } from './Form.styled';
 
 class Form extends Component {
   state = {
@@ -26,10 +27,10 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <FormStyle onSubmit={this.handleSubmit}>
+        <Label>
           Name
-          <input
+          <Input
             type="text"
             name="name"
             value={this.state.name}
@@ -38,10 +39,10 @@ class Form extends Component {
             required
             onChange={this.handleChange}
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Number
-          <input
+          <Input
             type="tel"
             name="number"
             value={this.state.number}
@@ -50,10 +51,10 @@ class Form extends Component {
             required
             onChange={this.handleChange}
           />
-        </label>
+        </Label>
 
-        <button type="submit">Add Contact</button>
-      </form>
+        <Button type="submit">Add Contact</Button>
+      </FormStyle>
     );
   }
 }
