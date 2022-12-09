@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import Form from '../Form/Form';
 import ContactList from '../ContactList/ContactList';
+import Filter from '../Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -11,6 +12,7 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: '',
   };
 
   onDeleteContact = contactId => {
@@ -25,10 +27,13 @@ export class App extends Component {
       name: data.name,
       number: data.number,
     };
-
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts, newContact],
     }));
+  };
+
+  onChangeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
   };
 
   render() {
@@ -41,6 +46,7 @@ export class App extends Component {
 
         <div>
           <h2>Contacts</h2>
+          <Filter value={this.state.filter} onChange={this.onChangeFilter} />
           <ContactList
             state={this.state}
             onDeleteContact={this.onDeleteContact}
