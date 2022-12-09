@@ -1,7 +1,7 @@
 import Contact from 'components/Contact/Contact';
 import PropTypes from 'prop-types';
 
-const ContactList = ({ state: { contacts }, onDeleteContact }) => {
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul>
       {contacts.map(({ id, name, number }) => {
