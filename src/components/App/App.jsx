@@ -37,12 +37,21 @@ export function App() {
     setFilter(e.currentTarget.value);
   };
 
-  const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const visibleContacts = contacts.filter(contact =>
+  //   contact.name.toLowerCase().includes(filter.toLowerCase(contact))
+  // );
 
   // const visibleContacts = getVisibleContacts();
 
+  const getVisibleContacts = () => {
+    // const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+  const visibleContacts = getVisibleContacts();
   return (
     <Container>
       <Section>

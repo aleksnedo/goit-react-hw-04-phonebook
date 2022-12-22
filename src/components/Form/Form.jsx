@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { FormStyle, Label, Input, Button } from './Form.styled';
+import PropTypes from 'prop-types';
 
-export const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSubmit(name, number);
+    setName('');
+    setNumber('');
+  };
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -17,13 +25,6 @@ export const Form = ({ onSubmit }) => {
       default:
         break;
     }
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    onSubmit(name, number);
-    setName('');
-    setNumber('');
   };
 
   return (
@@ -56,6 +57,10 @@ export const Form = ({ onSubmit }) => {
       <Button type="submit">Add Contact</Button>
     </FormStyle>
   );
+};
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 // class oldForm extends Component {
